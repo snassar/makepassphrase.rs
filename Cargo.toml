@@ -1,0 +1,8 @@
+[package]
+
+name = "makepassphrase"
+version = "0.0.1"
+authors = [ "Samir Nassar <samir@samirnassar.com>" ]
+
+[dependencies]
+rand = "0.3"
