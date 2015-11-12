@@ -1,8 +1,63 @@
 [package]
 
 name = "makepassphrase"
-version = "0.0.1"
+version = "0.0.2"
 authors = [ "Samir Nassar <samir@samirnassar.com>" ]
+
+# A short blurb about the package. This is not rendered in any format when
+# uploaded to crates.io (aka this is not markdown)
+description = "A passphrase Diceware passphrase generator"
+
+# These URLs point to more information about the repository
+documentation = "https://github.com/snassar/makepassphrase.rs/wiki"
+homepage = "https://github.com/snassar/makepassphrase.rs"
+repository = "https://github.com/snassar/makepassphrase.rs"
+
+# This points to a file in the repository (relative to this Cargo.toml). The
+# contents of this file are stored and indexed in the registry.
+readme = "README.md"
+
+# This is a small list of keywords used to categorize and search for this
+# package.
+keywords = ["passphrase", "password", "diceware", "password generator"]
+
+# This is a string description of the license for this package. Currently
+# crates.io will validate the license provided against a whitelist of known
+# license identifiers from http://spdx.org/licenses/. Multiple licenses can
+# be separated with a `/`
+license = "GPL-3.0"
+
+# A flag for enabling documentation of this target. This is used by `cargo doc`.
+doc = true
+
+# The development profile, used for `cargo build`
+[profile.dev]
+opt-level = 0  # Controls the --opt-level the compiler builds with
+debug = true   # Controls whether the compiler passes `-g`
+rpath = false  # Controls whether the compiler passes `-C rpath`
+lto = false    # Controls `-C lto` for binaries and staticlibs
+debug-assertions = true  # Controls whether debug assertions are enabled
+codegen-units = 1 # Controls whether the compiler passes `-C codegen-units`
+                  # `codegen-units` is ignored when `lto = true`
+
+# The release profile, used for `cargo build --release`
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = false
+debug-assertions = false
+codegen-units = 1
+
+# The documentation profile, used for `cargo doc`
+[profile.doc]
+opt-level = 0
+debug = true
+rpath = false
+lto = false
+debug-assertions = true
+codegen-units = 1
 
 [dependencies]
 rand = "0.3"
+getopts = "0.2"
